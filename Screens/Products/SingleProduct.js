@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Image, View, StyleSheet, Text, ScrollView, Button } from 'react-native';
 import { Left, Right, Container, H1 } from 'native-base';
 
+import { connect } from 'react-redux'
+import * as actions from '../../Redux/Actions/cartActions'
+
 const SingleProduct = (props) => {
 
     const [item, setItem] = useState(props.route.params.item);
@@ -19,9 +22,33 @@ const SingleProduct = (props) => {
                         style={styles.image}
                     />
                 </View>
+                <View style={styles.contentContainer}>
+                    <H1 style={styles.contentHeader}>{item.name}</H1>
+                    <Text style={styles.contentText}>{item.brand}</Text>
+                </View>
+                {/*Description, RichDesc, Availability */}
             </ScrollView>
+
+            <View style={styles.bottomContainer}>
+                <Left>
+                    <Text style={styles.price}>$ {item.price}</Text>
+                </Left>
+                <Right>
+                    <Button
+                        title="Add"
+                        onPress={() => props.addItemToCart(item)}
+                    />
+                </Right>
+            </View>
         </Container>
     )
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addItemToCart: (product) =>
+            dispatch(actions.addToCart({ quantity: 1, product }))
+    }
 }
 
 const styles = StyleSheet.create({
@@ -37,7 +64,34 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: 250
+    },
+    contentContainer: {
+        marginTop: 20,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    contentHeader: {
+        fontWeight: 'bold',
+        marginBottom: 20
+    },
+    contentText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 20
+    },
+    bottomContainer: {
+        flexDirection: 'row',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        backgroundColor: 'white'
+    },
+    price: {
+        fontSize: 24,
+        margin: 20,
+        color: 'blue'
     }
+
 })
 
-export default SingleProduct;
+export default connect(null, mapDispatchToProps)(SingleProduct);
