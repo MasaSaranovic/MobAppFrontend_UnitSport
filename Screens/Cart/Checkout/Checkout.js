@@ -29,6 +29,7 @@ const Checkout = (props) => {
     }, [])
 
 const checkOut = () => {
+    
     let order = {
         city,
         country,
@@ -91,7 +92,7 @@ const checkOut = () => {
                         placeholder="Select your country"
                         placeholderStyle={{ color: '#007aff' }}
                         placeholderIconColor='#007aff'
-                        onValueChange={(e) => setCounty(e)}
+                        onValueChange={(e) => setCountry(e)}
                     >
                         {countries.map((c) => {
                             return <Picker.Item
