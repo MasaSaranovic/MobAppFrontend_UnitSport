@@ -9,9 +9,9 @@ const Banner = () => {
 
   useEffect(() => {
     setBannerData([
-      "https://images.vexels.com/media/users/3/126443/preview2/ff9af1e1edfa2c4a46c43b0c2040ce52-macbook-pro-touch-bar-banner.jpg",
-      "https://pbs.twimg.com/media/D7P_yLdX4AAvJWO.jpg",
-      "https://www.yardproduct.com/blog/wp-content/uploads/2016/01/gardening-banner.jpg",
+      "https://www.unit-sport.net/wp-content/uploads/2018/02/Odbojka-min.jpg",
+      "http://www.unit-sport.net/wp-content/uploads/2018/01/strongman.jpg",
+      "http://www.unit-sport.net/wp-content/uploads/2018/01/brse2.jpg",
     ]);
 
     return () => {
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   imageBanner: {
     height: width / 2,
     width: width - 40,
-    borderRadius: 10,
+    borderRadius: 5,
     marginHorizontal: 20,
   },
 });
